@@ -77,32 +77,16 @@ O app trabalha com dois perfis (personas):
 ## 📂 Estrutura do projeto
 
 ```
-viva-segura/
-├── assets/          # Imagens e ícones do aplicativo
-├── screenshots/     # Capturas de tela usadas no README
+app-viva-segura/
+├── assets/          # Imagens e ícones
+├── screenshots/     # Prints do app 
 ├── src/
-│   ├── app/
-│   │   └── navigation/
-│   │       └── RootNavigator.js  # Rotas e telas do aplicativo
-│   ├── features/
-│   │   ├── auth/                 # Login e cadastros
-│   │   ├── emergency/            # SOS e central de emergência
-│   │   ├── guardian/             # Telas e componentes do guardião
-│   │   ├── guardians/            # Gerenciamento de guardiões
-│   │   ├── map/                  # Mapa e rotas
-│   │   ├── messages/             # Chat e mensagens
-│   │   ├── news/                 # Mural e serviço de notícias
-│   │   ├── support/              # Ajuda e suporte
-│   │   └── user/                 # Telas e componentes da usuária
+│   ├── components/  # Componentes reutilizáveis da interface
+│   ├── Screens/     # Telas do aplicativo
 │   └── services/
-│       └── api.js                # Cliente HTTP compartilhado da API
-├── App.js                        # Provedores e estrutura principal
-├── index.js                      # Registro do aplicativo no Expo
-├── app.json                      # Configuração do Expo
-└── package.json                  # Scripts e dependências
+│       └── api.js   # Configuração da conexão com o backend (IP)
+└── App.js           # Ponto de entrada da aplicação
 ```
-
-Cada funcionalidade mantém suas telas, estilos e serviços locais próximos uns dos outros. Os componentes específicos de uma funcionalidade ficam dentro dela; o cliente HTTP compartilhado permanece em `src/services/api.js`.
 
 ## Como executar o projeto
 
@@ -116,7 +100,7 @@ O backend está em um repositório separado, feito em Laravel, e utiliza o **XAM
 
 **Pré-requisitos:**
 
-- [PHP](https://www.php.net/) 8.1 ou superior e [Composer](https://getcomposer.org/) instalados
+- [PHP](https://www.php.net/) e [Composer](https://getcomposer.org/) instalados
 - [XAMPP](https://www.apachefriends.org/) instalado (para o MySQL)
 
 **Passo a passo:**
@@ -128,36 +112,10 @@ cd app-viva-segura-backend
 
 # Instale as dependências
 composer install
-```
 
-Crie o arquivo de ambiente. No PowerShell:
+# Rode o XAMPP (inicie o módulo MySQL pelo painel do XAMPP)
 
-```powershell
-Copy-Item .env.example .env
-```
-
-No macOS ou Linux:
-
-```bash
-cp .env.example .env
-```
-
-Inicie o MySQL pelo XAMPP. Configure as variáveis do banco no `.env` e crie o banco indicado em `DB_DATABASE`. O `.env.example` do backend usa estes valores locais como padrão; ajuste-os se necessário:
-
-```dotenv
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-Gere a chave da aplicação e prepare o banco:
-
-```bash
-php artisan key:generate
-
+# Rode as migrations
 php artisan migrate
 
 # Popule o banco com os seeders
@@ -175,16 +133,17 @@ php artisan serve --host=0.0.0.0 --port=8000
 **Pré-requisitos:**
 
 - [Node.js](https://nodejs.org/) instalado
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) instalado globalmente
 - App **Expo Go** instalado no celular (Android/iOS) ou um emulador configurado
 
 **Passo a passo:**
 
 ```bash
 # Clone o repositório
-git clone https://github.com/monigata/viva-segura.git
+git clone https://github.com/moniqueagata/app-viva-segura.git
 
 # Acesse a pasta do projeto
-cd viva-segura
+cd app-viva-segura
 
 # Instale as dependências
 npm install
@@ -193,19 +152,13 @@ npm install
 npx expo start
 ```
  
-> ⚠️ Antes de rodar no celular, configure o endereço da API em `src/services/api.js` com o **IP local do computador** onde o backend está rodando. O celular e o computador precisam estar na mesma rede Wi-Fi.
-
-Por exemplo, se o IP local do computador for `192.168.1.25`, configure:
-
-```js
-baseURL: "http://192.168.1.25:8000/api"
-```
+> ⚠️ Antes de rodar, altere o IP configurado no `api.js` do app para o **IP local do seu computador** (o mesmo que está rodando o backend). Celular e computador precisam estar na mesma rede Wi-Fi.
 
 ```bash
 # Abra um novo terminal e execute
 ipconfig
 ```
-- Procure por **"Endereço IPv4"** e use esse endereço na URL de `src/services/api.js`.
+- Procure por **"Endereço IPv4"** copie o IP e cole na URL do `api.js`.
 
 Após rodar o comando, escaneie o QR Code exibido no terminal com o app **Expo Go** para visualizar o aplicativo no seu celular.
 
