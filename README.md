@@ -1,17 +1,26 @@
 <div align="center">
-  <img src="screenshots/logo.png" alt="Logo Viva Segura" width="100%"/>
+  <img src="docs/screenshots/logo.png" alt="Logo Viva Segura" width="100%"/>
+</div>
+<br>
+
+<div align="center">
+
+![Tamanho do repositório](https://img.shields.io/github/repo-size/monigata/viva-segura?style=for-the-badge&color=7200be)
+![Linguagens](https://img.shields.io/github/languages/count/monigata/viva-segura?style=for-the-badge&color=ab49ec)
+![Contribuidores](https://img.shields.io/github/contributors/monigata/viva-segura?style=for-the-badge&color=ab49ec)
+![Forks](https://img.shields.io/github/forks/monigata/viva-segura?style=for-the-badge&color=7200be)
+![Último commit](https://img.shields.io/github/last-commit/monigata/viva-segura?style=for-the-badge&color=7200be)
+
 </div>
 
-# Viva Segura
-
-Aplicativo mobile desenvolvido como Trabalho de Conclusão de Curso do Técnico em Desenvolvimento de Sistemas da ETEC de Guaianazes. A proposta é oferecer recursos de apoio à segurança de mulheres durante seus deslocamentos, com localização, compartilhamento de rotas e contato com pessoas de confiança.
+Aplicativo mobile desenvolvido como Trabalho de Conclusão de Curso em Desenvolvimento de Sistemas da ETEC de Guaianazes. A proposta é oferecer recursos de apoio à segurança de mulheres durante seus deslocamentos, com localização, compartilhamento de rotas e contato com pessoas de confiança.
 
 O projeto tem dois perfis:
 
-- **Usuária:** acessa os recursos de mapa, localização, SOS, comunicação e gerenciamento de guardiões.
-- **Guardião:** recebe solicitações de compartilhamento de rota, acompanha a localização compartilhada e recebe alertas.
+- 💜 **Usuária:** acessa os recursos de mapa, localização, SOS, comunicação e gerenciamento de guardiões.
+- 💚 **Guardião:** recebe solicitações de compartilhamento de rota, acompanha a localização compartilhada e recebe alertas.
 
-## Funcionalidades
+## 🔗 Funcionalidades
 
 - Cadastro e login para usuárias e guardiões.
 - Mapa com localização atual, busca de endereço e traçado de rota.
@@ -21,9 +30,9 @@ O projeto tem dois perfis:
 - Cadastro e gerenciamento de guardiões e endereços de confiança.
 - Mural de notícias relacionadas a segurança, direitos e bem-estar.
 
-Os recursos que salvam ou consultam dados dependem do backend estar ativo e acessível pelo aplicativo. A localização é atualizada periodicamente durante o uso do mapa.
+Os recursos de autenticação, SOS, mensagens e compartilhamento de rotas dependem do backend. Favoritos e curtidas do Mural são salvos localmente no aparelho. Durante o uso do mapa, a localização é atualizada periodicamente.
 
-## Tecnologias e arquitetura
+## 👩🏻‍💻 Tecnologias e arquitetura
 
 - **Aplicativo:** React Native, Expo e JavaScript.
 - **Navegação e interface:** React Navigation e React Native Paper.
@@ -36,35 +45,33 @@ Os recursos que salvam ou consultam dados dependem do backend estar ativo e aces
 
 O aplicativo chama endpoints da API para autenticação, cadastro, localização, SOS, rotas compartilhadas, guardiões e mensagens. O backend está no [repositório app-viva-segura-backend](https://github.com/Kaawanny/app-viva-segura-backend).
 
-## Capturas de tela
+## 📲 Capturas de tela
 
-### Perfil de usuária
+### Perfil de usuária 
 
 | Início | Mural de notícias | Mapa |
 |---|---|---|
-| ![Tela inicial da usuária](screenshots/home_usuaria.png) | ![Mural de notícias](screenshots/mural.png) | ![Mapa do aplicativo](screenshots/mapa.png) |
+| ![Tela inicial da usuária](docs/screenshots/home-woman.png) | ![Mural de notícias](docs/screenshots/newsboard-woman.png) | ![Mapa do aplicativo](docs/screenshots/map-woman.png) |
 
-### Perfil de guardião
+### Perfil de guardião 
 
 | Início | Acompanhar rota | Central de alertas |
 |---|---|---|
-| ![Tela inicial do guardião](screenshots/home_guardiao.png) | ![Tela de acompanhamento de rota](screenshots/rota.png) | ![Central de alertas SOS](screenshots/alerta.png) |
+| ![Tela inicial do guardião](docs/screenshots/home-guardian.png) | ![Tela de acompanhamento de rota](docs/screenshots/map-guardian.png) | ![Central de alertas SOS](docs/screenshots/alert-guardian.png) |
 
-## Estrutura do projeto
+## 📁 Estrutura do projeto
 
 ```text
 viva-segura/
 ├── assets/                         # Imagens e ícones do aplicativo
-├── screenshots/                    # Capturas usadas na documentação
+├── docs/
+│   └── screenshots/                # Capturas usadas na documentação
 ├── src/
 │   ├── components/                 # Componentes reutilizáveis
 │   ├── Screens/                    # Telas do aplicativo
-│   │   ├── Cadastro/
-│   │   ├── CadastroGuardiao/
-│   │   ├── HomeGuardiao/
 │   │   └── Mural/
 │   │       └── services/
-│   │           └── apiMural.js
+│   │           └── apiMural.js     # API do mural de noticias
 │   └── services/
 │       └── api.js                  # Cliente HTTP da API
 ├── App.js                          # Configuração da navegação
@@ -75,7 +82,7 @@ viva-segura/
 └── README.md
 ```
 
-## Como executar localmente
+## 💻 Como executar localmente
 
 Para usar autenticação, SOS, chat, compartilhamento de rotas e dados salvos, o backend precisa estar em execução. No teste com Expo Go no celular, o celular e o computador que executa a API precisam estar na mesma rede Wi-Fi.
 
@@ -95,10 +102,10 @@ cd app-viva-segura-backend
 composer install
 ```
 
-Crie o arquivo `.env` a partir do exemplo. No PowerShell:
+Crie o arquivo `.env` a partir do exemplo:
 
-```powershell
-Copy-Item .env.example .env
+```bash
+copy .env.example .env
 ```
 
 No macOS ou Linux:
@@ -162,7 +169,7 @@ baseURL: "http://192.168.1.25:8000/api"
 
 Não use `localhost` no celular: nesse caso, ele apontaria para o próprio aparelho. O IP deve corresponder ao computador que está executando o backend.
 
-## Observações
+## 👀 Observações
 
 - O endereço da API está configurado diretamente em `src/services/api.js`; cada ambiente local pode exigir um IP diferente.
 - O mural depende de serviços externos para carregar notícias.
