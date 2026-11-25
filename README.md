@@ -2,217 +2,168 @@
   <img src="screenshots/logo.png" alt="Logo Viva Segura" width="100%"/>
 </div>
 
-<br>
+# Viva Segura
 
-**Viva Segura** é um aplicativo desenvolvido como Trabalho de Conclusão de Curso do curso Técnico de Desenvolvimento de Sistemas na *ETEC de Guaianazes*. O objetivo do app é oferecer segurança e proteção às mulheres durante seus deslocamentos diários.
+Aplicativo mobile desenvolvido como Trabalho de Conclusão de Curso do Técnico em Desenvolvimento de Sistemas da ETEC de Guaianazes. A proposta é oferecer recursos de apoio à segurança de mulheres durante seus deslocamentos, com localização, compartilhamento de rotas e contato com pessoas de confiança.
 
-## 💡 Sobre o projeto
+O projeto tem dois perfis:
 
-Com o aumento de casos de feminicídio no Brasil, muitas mulheres se sentem **inseguras** ao se deslocarem desacompanhadas durante o cotidiano. 
+- **Usuária:** acessa os recursos de mapa, localização, SOS, comunicação e gerenciamento de guardiões.
+- **Guardião:** recebe solicitações de compartilhamento de rota, acompanha a localização compartilhada e recebe alertas.
 
-O **Viva Segura** nasce para reduzir essa insegurança, permitindo que a usuária compartilhe sua localização, converse e acione ajuda de forma rápida.
+## Funcionalidades
 
-O aplicativo conta com dois perfis de acesso:
+- Cadastro e login para usuárias e guardiões.
+- Mapa com localização atual, busca de endereço e traçado de rota.
+- Compartilhamento de trajeto com guardiões.
+- Botão SOS que envia a localização à API.
+- Chat entre usuária e guardião.
+- Cadastro e gerenciamento de guardiões e endereços de confiança.
+- Mural de notícias relacionadas a segurança, direitos e bem-estar.
 
-- 👩 **Usuária** — perfil destinado ás mulheres, que utiliza os principais recursos do app.
-- 😇 **Guardião** — contato de confiança escolhido pela usuária que acompanha seus deslocamentos e é acionado em casos de emergência.
+Os recursos que salvam ou consultam dados dependem do backend estar ativo e acessível pelo aplicativo. A localização é atualizada periodicamente durante o uso do mapa.
 
-### Principais funcionalidades
+## Tecnologias e arquitetura
 
-- 🔐 **Autenticação e escolha de perfil** — ao entrar no app, o usuário define se é *Usuária* ou *Guardião*.
-- 📍 **Compartilhamento de trajeto** — a usuária compartilha seu trajeto em tempo real com o Guardião escolhido.
-- 💬 **Chat** — comunicação direta entre usuária e guardião.
-- 🚨 **Botão de SOS** — em situações de emergência, envia um alerta imediato ao guardião.
-- 📌 **Endereços de confiança** — a usuária pode cadastrar endereços confiaveís (casa, trabalho, etc.).
-- 📰 **Mural de notícias** — conteúdo informativo voltado ao público feminino.
+- **Aplicativo:** React Native, Expo e JavaScript.
+- **Navegação e interface:** React Navigation e React Native Paper.
+- **Localização e mapas:** Expo Location e React Native Maps.
+- **Comunicação com a API:** Axios.
+- **Backend:** Laravel 10 e PHP 8.1 ou superior, em um repositório separado.
+- **Banco de dados:** MySQL.
+- **Rotas:** serviço Project OSRM.
+- **Notícias:** Google News RSS consultado por meio do serviço RSS2JSON.
 
-<div align="center">
+O aplicativo chama endpoints da API para autenticação, cadastro, localização, SOS, rotas compartilhadas, guardiões e mensagens. O backend está no [repositório app-viva-segura-backend](https://github.com/Kaawanny/app-viva-segura-backend).
 
-### 💻 Tecnologias utilizadas
+## Capturas de tela
 
-![React Native](https://img.shields.io/badge/-React_Native-0D1117?style=for-the-badge&logo=react&logoColor=61DAFB&labelColor=0D1117)&nbsp;
-![Expo](https://img.shields.io/badge/-Expo-0D1117?style=for-the-badge&logo=expo&logoColor=f0f0f0&labelColor=0D1117)&nbsp;
-![JavaScript](https://img.shields.io/badge/-JavaScript-0D1117?style=for-the-badge&logo=javascript&logoColor=ffe240&labelColor=0D1117)&nbsp;
-![Laravel](https://img.shields.io/badge/-Laravel-0D1117?style=for-the-badge&logo=laravel&logoColor=e63124&labelColor=0D1117)&nbsp;
-![MySQL](https://img.shields.io/badge/-MySQL-0D1117?style=for-the-badge&logo=mysql&logoColor=7bafd6&labelColor=0D1117)&nbsp;
-![Git](https://img.shields.io/badge/-Git-0D1117?style=for-the-badge&logo=git&logoColor=fc8b2e&labelColor=0D1117)&nbsp;
+### Perfil de usuária
 
-<a href="https://project-osrm.org/">
+| Início | Mural de notícias | Mapa |
+|---|---|---|
+| ![Tela inicial da usuária](screenshots/home_usuaria.png) | ![Mural de notícias](screenshots/mural.png) | ![Mapa do aplicativo](screenshots/mapa.png) |
 
-  ![Project OSRM](https://img.shields.io/badge/API_Project_OSRM-0D1117?style=for-the-badge&logoColor=7bafd6&labelColor=0D1117)&nbsp;
-  
-</a>
+### Perfil de guardião
 
-</div>
+| Início | Acompanhar rota | Central de alertas |
+|---|---|---|
+| ![Tela inicial do guardião](screenshots/home_guardiao.png) | ![Tela de acompanhamento de rota](screenshots/rota.png) | ![Central de alertas SOS](screenshots/alerta.png) |
 
-## 📱 Prints do aplicativo
+## Estrutura do projeto
 
-<h3 align="center">Telas da usuária</h3>
-<table align="center">
-  <tr>
-    <td align="center">Home</td>
-    <td align="center">Mural de notícias</td>
-    <td align="center">Mapa</td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/home_usuaria.png" width="220"/></td>
-    <td><img src="screenshots/mural.png" width="220"/></td>
-    <td><img src="screenshots/mapa.png" width="220"/></td>
-  </tr>
-</table>
-
-<h3 align="center">Telas do guardião</h3>
-<table align="center">
-  <tr>
-    <td align="center">Home</td>
-    <td align="center">Acompanhar rota</td>
-    <td align="center">Central de Alertas (SOS)</td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/home_guardiao.png" width="220"/></td>
-    <td><img src="screenshots/rota.png" width="220"/></td>
-    <td><img src="screenshots/alerta.png" width="220"/></td>
-  </tr>
-</table>
-
-
-## 📂 Estrutura do projeto
-
-```
-app-viva-segura/
-├── assets/          # Imagens e ícones
-├── screenshots/     # Prints
+```text
+viva-segura/
+├── assets/                         # Imagens e ícones do aplicativo
+├── screenshots/                    # Capturas usadas na documentação
 ├── src/
-│   ├── components/  # Componentes reutilizáveis da interface
-│   ├── Screens/     # Telas do aplicativo
+│   ├── components/                 # Componentes reutilizáveis
+│   ├── Screens/                    # Telas do aplicativo
+│   │   ├── Cadastro/
+│   │   ├── CadastroGuardiao/
+│   │   ├── HomeGuardiao/
+│   │   └── Mural/
+│   │       └── services/
+│   │           └── apiMural.js
 │   └── services/
-│       └── api.js   # Configuração do IP e conexão com o banco
-└── App.js           # Ponto de entrada da aplicação
+│       └── api.js                  # Cliente HTTP da API
+├── App.js                          # Configuração da navegação
+├── index.js                        # Registro do app no Expo
+├── app.json                        # Configuração do Expo
+├── package.json                    # Scripts e dependências
+├── package-lock.json
+└── README.md
 ```
 
-## Como executar o projeto?
+## Como executar localmente
 
-Como o aplicativo depende da API para realizar autenticação e armazenar os dados, o back-end deve estar funcionando **ANTES** de iniciar o app.
+Para usar autenticação, SOS, chat, compartilhamento de rotas e dados salvos, o backend precisa estar em execução. No teste com Expo Go no celular, o celular e o computador que executa a API precisam estar na mesma rede Wi-Fi.
 
-> ⚠️ **Importante:** durante a execução local, o celular e o computador precisam estar conectados à **mesma rede Wi-Fi**.
+### 1. Configurar o backend
 
-### 1. Rodando o back-end
+Pré-requisitos:
 
-O back-end está em um repositório separado, que utiliza o **XAMPP** para o banco de dados **MySQL** - 🔗 **[app-viva-segura-backend](https://github.com/Kaawanny/app-viva-segura-backend)**
+- PHP 8.1 ou superior
+- Composer
+- MySQL (o XAMPP pode ser usado para iniciar o MySQL localmente)
 
-**Pré-requisitos:**
-
-Antes de iniciar, certifique-se de que os seguintes programas estão instalados:
-
-- [PHP](https://www.php.net/)
-- [Composer](https://getcomposer.org/) 
-- [XAMPP](https://www.apachefriends.org/)
-
-**Passo a passo:**
+Clone o repositório do backend e instale as dependências:
 
 ```bash
-# Clone o repositório
-
 git clone https://github.com/Kaawanny/app-viva-segura-backend.git
 cd app-viva-segura-backend
-
-# Instale as dependências
 composer install
+```
 
-# Rode o XAMPP (inicie o módulo MySQL pelo painel do XAMPP)
+Crie o arquivo `.env` a partir do exemplo. No PowerShell:
 
-# Rode as migrations
+```powershell
+Copy-Item .env.example .env
+```
+
+No macOS ou Linux:
+
+```bash
+cp .env.example .env
+```
+
+Inicie o MySQL e configure no `.env` a conexão com o banco. O arquivo `.env.example` do backend usa estes valores locais como padrão; ajuste-os se sua instalação do MySQL for diferente:
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Crie no MySQL o banco informado em `DB_DATABASE`. Em seguida, gere a chave da aplicação, crie as tabelas e carregue os dados iniciais:
+
+```bash
+php artisan key:generate
 php artisan migrate
-
-# Popule o banco com as Seeders
 php artisan db:seed --class=RoleSeeder
 php artisan db:seed --class=LocalSeguroSeeder
+```
 
-# Suba o servidor expondo na rede local
+Inicie a API permitindo conexões pela rede local:
+
+```bash
 php artisan serve --host=0.0.0.0 --port=8000
 ```
 
-> O `--host=0.0.0.0` permite que o servidor seja acessado pelo celular através da rede local. Sem essa configuração, a API ficará disponível apenas no computador por meio do `localhost`.
+### 2. Configurar o aplicativo
 
-### 2. Rodando o aplicativo
-
-Com o back-end em execução, agora é necessário configurar e iniciar o aplicativo.
-
-**Pré-requisitos:**
-
-Certifique-se de que os seguintes recursos estão instalados:
-
-- [Node.js](https://nodejs.org/)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/) instalado globalmente
-- [Expo Go](https://expo.dev/go) instalado no celular (Android/iOS) ou um emulador configurado
-
-**Passo a passo:**
+Clone este repositório, instale as dependências e inicie o Expo:
 
 ```bash
-# Clone o repositório
-git clone https://github.com/moniagth/app-viva-segura.git
-
-# Acesse a pasta do projeto
-cd app-viva-segura
-
-# Instale as dependências
+git clone https://github.com/monigata/viva-segura.git
+cd viva-segura
 npm install
-```
- 
-### 3. Configurando o endereço da API
-
-Antes de iniciar o aplicativo, é necessário informar onde o back-end está sendo executado.
-
-Para isso, abra o arquivo `api.js`, localizado na pasta `services`, e altere o endereço da API para utilizar o **IP local do computador**.
-
-<img src="screenshots/local_api.png">
-
-Como o aplicativo será executado no celular, não é possível utilizar simplesmente `localhost`. Nesse caso, o celular precisa acessar o computador pela **rede Wi-Fi** utilizando o endereço IP local.
-
-### 🛜 Como descobrir o IP local?
-
-Abra um novo terminal no computador e execute:
-
-```bash
-# Execute o comando
-ipconfig
-```
-
-Procure por **"Endereço IPv4"** e copie o endereço apresentado.
-
-<img src="screenshots/endereco_ip.png">
-
-> ❗ **Importante:** o celular e o computador precisam estar conectados à **mesma rede Wi-Fi** para que o aplicativo consiga acessar a API.
-
-Depois de copiar o endereço IPv4, substitua o IP configurado na *url* do arquivo `api.js`.
-
-<img src="screenshots/url_api.png">
-
-### 4. Iniciando o aplicativo
-
-Com o back-end funcionando e o IP configurado, o aplicativo já pode ser iniciado.
-
-No terminal, dentro da pasta do projeto, execute:
-
-```bash
-# inicie o aplicativo
 npx expo start
 ```
 
-Após executar o comando, o *Expo* exibirá um **QR Code** no terminal.
+O Expo exibirá um QR Code. Abra o Expo Go no celular e escaneie o código, ou execute o projeto em um emulador.
 
-Abra o aplicativo *Expo Go* no celular e escaneie o QR Code exibido.
+### 3. Configurar o endereço da API
 
-Se todas as configurações estiverem corretas, o **Viva Segura** será carregado no dispositivo.
+Antes de abrir o aplicativo no celular, edite `src/services/api.js`. Substitua o endereço base pelo IP local do computador onde o backend está rodando:
 
-### ✨ Tudo pronto!
+```js
+baseURL: "http://SEU_IP_LOCAL:8000/api"
+```
 
-Agora você pode acessar o **Viva Segura** e explorar suas funcionalidades na prática.
+No Windows, use `ipconfig` e procure o endereço IPv4 da rede Wi-Fi. Por exemplo, se o endereço do computador for `192.168.1.25`, configure:
 
-#
-<br>
-<div align="center">
+```js
+baseURL: "http://192.168.1.25:8000/api"
+```
 
-<strong> *Projeto dedicado a todas as mulheres que lutam por uma vida mais segura e livre da violência.* </strong>
+Não use `localhost` no celular: nesse caso, ele apontaria para o próprio aparelho. O IP deve corresponder ao computador que está executando o backend.
 
-</div>
+## Observações
+
+- O endereço da API está configurado diretamente em `src/services/api.js`; cada ambiente local pode exigir um IP diferente.
+- O mural depende de serviços externos para carregar notícias.
+- Os passos do backend descrevem a configuração local usada pelo projeto. O repositório do backend contém um README padrão do Laravel, sem documentação específica do Viva Segura.
